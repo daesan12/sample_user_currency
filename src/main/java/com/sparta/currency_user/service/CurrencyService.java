@@ -17,7 +17,8 @@ public class CurrencyService {
     private final CurrencyRepository currencyRepository;
 
     public CurrencyResponseDto findById(Long id) {
-        return new CurrencyResponseDto(findCurrencyById(id));
+        Currency currency = findCurrencyById(id);
+        return  CurrencyResponseDto.toDto(currency);
     }
 
     public Currency findCurrencyById(Long id) {
@@ -31,6 +32,6 @@ public class CurrencyService {
     @Transactional
     public CurrencyResponseDto save(CurrencyRequestDto currencyRequestDto) {
         Currency savedCurrency = currencyRepository.save(currencyRequestDto.toEntity());
-        return new CurrencyResponseDto(savedCurrency);
+        return CurrencyResponseDto.toDto(savedCurrency);
     }
 }
