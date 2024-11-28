@@ -2,6 +2,7 @@ package com.sparta.currency_user.domain.exchange.controller;
 
 import com.sparta.currency_user.domain.exchange.dto.ExchangeRequestDto;
 import com.sparta.currency_user.domain.exchange.dto.ExchangeResponseDto;
+import com.sparta.currency_user.domain.exchange.dto.FindGroupResponseDto;
 import com.sparta.currency_user.domain.exchange.service.ExchangeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,11 @@ public class ExchangeController {
         return ResponseEntity.ok(updatedExchange);
     }
 
+    @GetMapping("/group")
+    public ResponseEntity<List<FindGroupResponseDto>> findByGroup() {
+
+        List<FindGroupResponseDto> groups = exchangeService.findGroup();
+        return ResponseEntity.ok(groups);
+    }
 
 }

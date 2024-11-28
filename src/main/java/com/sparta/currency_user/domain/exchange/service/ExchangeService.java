@@ -4,6 +4,7 @@ import com.sparta.currency_user.domain.currency.service.CurrencyService;
 import com.sparta.currency_user.domain.exchange.dto.ExchangeRequestDto;
 import com.sparta.currency_user.domain.exchange.dto.ExchangeResponseDto;
 import com.sparta.currency_user.domain.currency.entity.Currency;
+import com.sparta.currency_user.domain.exchange.dto.FindGroupResponseDto;
 import com.sparta.currency_user.domain.exchange.entity.Exchange;
 import com.sparta.currency_user.domain.user.entity.User;
 import com.sparta.currency_user.domain.exchange.repository.ExchangeRepository;
@@ -60,5 +61,9 @@ public class ExchangeService {
         exchange.toggleStatus();
 
         return  ExchangeResponseDto.toDto(exchange);
+    }
+
+    public List<FindGroupResponseDto> findGroup() {
+        return exchangeRepository.findGroup();
     }
 }

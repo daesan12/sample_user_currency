@@ -20,7 +20,7 @@ public class ExchangeRequestDto {
    @Positive(message = "통화 ID는 양수여야 합니다.")
    private Long toCurrencyId;
 
-   @NotBlank(message = "사용자 ID는 필수 입력값입니다.")
+   @NotNull(message = "사용자 ID는 필수 입력값입니다.")
    @Positive(message = "사용자 ID는 양수여야 합니다.")
    private Long toUserId;
 
