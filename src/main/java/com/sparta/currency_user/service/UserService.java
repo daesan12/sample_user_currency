@@ -16,7 +16,8 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserResponseDto findById(Long id) {
-        return new UserResponseDto(findUserById(id));
+        User user = findUserById(id);
+        return  UserResponseDto.toDto(findUserById(id));
     }
 
     public User findUserById(Long id) {
@@ -30,7 +31,7 @@ public class UserService {
     @Transactional
     public UserResponseDto save(UserRequestDto userRequestDto) {
         User savedUser = userRepository.save(userRequestDto.toEntity());
-        return new UserResponseDto(savedUser);
+        return UserResponseDto.toDto(savedUser);
     }
 
     @Transactional
