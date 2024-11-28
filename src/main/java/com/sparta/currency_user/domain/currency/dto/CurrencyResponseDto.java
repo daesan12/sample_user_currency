@@ -18,16 +18,14 @@ public class CurrencyResponseDto {
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
-
-
     public static CurrencyResponseDto toDto(Currency currency) {
         return new CurrencyResponseDto(
-         currency.getId(),
-         currency.getCurrencyName(),
-         currency.getExchangeRate(),
-         currency.getSymbol(),
-         currency.getCreatedAt(),
-         currency.getUpdatedAt()
+                currency.getId(),
+                currency.getCurrencyName(),
+                currency.getExchangeRate(),
+                currency.getSymbol(),
+                currency.getCreatedAt(),
+                currency.getUpdatedAt()
         );
     }
 }

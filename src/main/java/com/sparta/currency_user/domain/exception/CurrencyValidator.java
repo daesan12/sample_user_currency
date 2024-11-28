@@ -13,7 +13,7 @@ public class CurrencyValidator {
     private final CurrencyService currencyService;
 
     @PostConstruct
-    public void validateStartup(){
+    public void validateStartup() {
         log.info("통화,환율 유효성 검사시작");
         currencyService.validateExchangeRates();
         log.info("통화,환율 유효성 검사완료");

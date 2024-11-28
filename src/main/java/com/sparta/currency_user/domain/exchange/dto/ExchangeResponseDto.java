@@ -20,9 +20,6 @@ public class ExchangeResponseDto {
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
 
-
-
-
     public static ExchangeResponseDto toDto(Exchange exchange) {
         return new ExchangeResponseDto(
                 exchange.getId(),

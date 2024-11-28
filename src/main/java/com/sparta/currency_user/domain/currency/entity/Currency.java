@@ -32,5 +32,6 @@ public class Currency extends Base {
         this.symbol = symbol;
     }
 
-    public Currency() {}
+    public Currency() {
+    }
 }

@@ -28,39 +28,31 @@ public class ExchangeService {
 
     @Transactional
     public void save(ExchangeRequestDto requestDto) {
-        // User 및 Currency 객체 조회
         User user = userService.findUserById(requestDto.getToUserId());
         Currency currency = currencyService.findCurrencyById(requestDto.getToCurrencyId());
-
-        // 환율 계산
         BigDecimal exchangeRate = currency.getExchangeRate();
-        BigDecimal amountAfterExchange  = requestDto.getAmountInKrw().divide(exchangeRate, 2, RoundingMode.HALF_UP);
+        BigDecimal amountAfterExchange = requestDto.getAmountInKrw().divide(exchangeRate, 2, RoundingMode.HALF_UP);
 
-        // Exchange 객체 생성 및 저장
         Exchange exchange = new Exchange(user, currency, requestDto.getAmountInKrw(), amountAfterExchange);
         Exchange change = exchangeRepository.save(exchange);
 
     }
 
     public List<ExchangeResponseDto> findByUserId(Long userId) {
-        // 특정 사용자의 환전 내역 조회
         List<Exchange> exchanges = exchangeRepository.findByUserId(userId);
 
-        // 조회된 Entity 를 DTO로 변환
         return exchanges.stream().
                 map(ExchangeResponseDto::toDto)
                 .collect(Collectors.toList());
     }
 
     @Transactional
-    public ExchangeResponseDto  update(Long id) {
+    public ExchangeResponseDto update(Long id) {
         Exchange exchange = exchangeRepository.findById(id).
-                orElseThrow(()->new IllegalArgumentException("해당 환전요청번호가 존재하지않습니다."+id));
-
-        // 상태를 변경
+                orElseThrow(() -> new IllegalArgumentException("해당 환전요청번호가 존재하지않습니다." + id));
         exchange.toggleStatus();
 
-        return  ExchangeResponseDto.toDto(exchange);
+        return ExchangeResponseDto.toDto(exchange);
     }
 
     public List<FindGroupResponseDto> findGroup() {

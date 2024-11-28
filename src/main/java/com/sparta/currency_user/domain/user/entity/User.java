@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name="user")
+@Table(name = "user")
 public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class User extends Base {
     private String name;
     private String email;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Exchange> exchanges;
 
     public User(String name, String email) {
@@ -28,7 +28,8 @@ public class User extends Base {
         this.email = email;
     }
 
-    public User() {}
+    public User() {
+    }
 
 
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class CurrencyService {
 
     public CurrencyResponseDto findById(Long id) {
         Currency currency = findCurrencyById(id);
-        return  CurrencyResponseDto.toDto(currency);
+        return CurrencyResponseDto.toDto(currency);
     }
 
     public Currency findCurrencyById(Long id) {

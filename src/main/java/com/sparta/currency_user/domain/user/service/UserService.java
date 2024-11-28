@@ -17,7 +17,7 @@ public class UserService {
 
     public UserResponseDto findById(Long id) {
         User user = findUserById(id);
-        return  UserResponseDto.toDto(findUserById(id));
+        return UserResponseDto.toDto(findUserById(id));
     }
 
     public User findUserById(Long id) {

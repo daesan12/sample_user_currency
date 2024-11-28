@@ -17,6 +17,7 @@ import java.util.List;
 public class ExchangeController {
 
     private final ExchangeService exchangeService;
+
     @PostMapping
     public ResponseEntity<String> createExchange(@Valid @RequestBody ExchangeRequestDto requestDto) {
         exchangeService.save(requestDto);
@@ -31,7 +32,7 @@ public class ExchangeController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<ExchangeResponseDto> updateExchange(@PathVariable Long id) {
-        ExchangeResponseDto  updatedExchange = exchangeService.update(id);
+        ExchangeResponseDto updatedExchange = exchangeService.update(id);
         return ResponseEntity.ok(updatedExchange);
     }
 
