@@ -5,11 +5,13 @@ import com.sparta.currency_user.dto.CurrencyResponseDto;
 import com.sparta.currency_user.entity.Currency;
 import com.sparta.currency_user.repository.CurrencyRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CurrencyService {
@@ -33,5 +35,16 @@ public class CurrencyService {
     public CurrencyResponseDto save(CurrencyRequestDto currencyRequestDto) {
         Currency savedCurrency = currencyRepository.save(currencyRequestDto.toEntity());
         return CurrencyResponseDto.toDto(savedCurrency);
+    }
+
+    // 환율 유효성 검사
+    public void validateExchangeRates() {
+        List<Currency> currencies = currencyRepository.findAll();
+        for (Currency currency : currencies) {
+            BigDecimal exchangeRate = currency.getExchangeRate();
+            if (exchangeRate == null || exchangeRate.compareTo(BigDecimal.ZERO) <= 0) {
+                log.warn("유효하지 않은 환율 발견 - 통화: {}, 환율: {}", currency.getCurrencyName(), exchangeRate);
+            }
+        }
     }
 }
