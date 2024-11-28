@@ -19,26 +19,25 @@ public class ExchangeController {
     private final ExchangeService exchangeService;
 
     @PostMapping
-    public ResponseEntity<String> createExchange(@Valid @RequestBody ExchangeRequestDto requestDto) {
-        exchangeService.save(requestDto);
+    public ResponseEntity<String> createExchangeRequest(@Valid @RequestBody ExchangeRequestDto requestDto) {
+        exchangeService.createExchangeRequest(requestDto);
         return ResponseEntity.ok().body("등록완료");
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<ExchangeResponseDto>> findByid(@PathVariable Long id) {
-        List<ExchangeResponseDto> response = exchangeService.findByUserId(id);
+    public ResponseEntity<List<ExchangeResponseDto>> findExchangeByUserId(@PathVariable Long id) {
+        List<ExchangeResponseDto> response = exchangeService.getExchangesByUserId(id);
         return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ExchangeResponseDto> updateExchange(@PathVariable Long id) {
+    public ResponseEntity<ExchangeResponseDto> updateExchangeStatus(@PathVariable Long id) {
         ExchangeResponseDto updatedExchange = exchangeService.update(id);
         return ResponseEntity.ok(updatedExchange);
     }
 
     @GetMapping("/group")
-    public ResponseEntity<List<FindGroupResponseDto>> findByGroup() {
-
+    public ResponseEntity<List<FindGroupResponseDto>> findGroupedExchangesByUser() {
         List<FindGroupResponseDto> groups = exchangeService.findGroup();
         return ResponseEntity.ok(groups);
     }

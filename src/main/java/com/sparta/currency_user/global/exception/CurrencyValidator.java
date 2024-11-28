@@ -1,4 +1,4 @@
-package com.sparta.currency_user.domain.exception;
+package com.sparta.currency_user.global.exception;
 
 import com.sparta.currency_user.domain.currency.service.CurrencyService;
 import jakarta.annotation.PostConstruct;

@@ -1,7 +1,7 @@
 package com.sparta.currency_user.domain.user.entity;
 
 import com.sparta.currency_user.domain.exchange.entity.Exchange;
-import com.sparta.currency_user.domain.entity.Base;
+import com.sparta.currency_user.global.entity.Base;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

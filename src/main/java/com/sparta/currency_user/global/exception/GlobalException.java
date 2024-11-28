@@ -1,4 +1,4 @@
-package com.sparta.currency_user.domain.exception;
+package com.sparta.currency_user.global.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -14,6 +14,7 @@ public interface ExchangeRepository extends JpaRepository<Exchange, Long> {
 
     List<Exchange> findByUserId(Long userId);
 
+    //사용자별 그룹화 환전요청
     @Query("SELECT new com.sparta.currency_user.domain.exchange.dto.FindGroupResponseDto(e.user.id, COUNT(e), SUM(e.amountInKrw)) " +
             "FROM Exchange e " +
             "GROUP BY e.user.id")

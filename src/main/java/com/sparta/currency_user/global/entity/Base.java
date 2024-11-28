@@ -1,4 +1,4 @@
-package com.sparta.currency_user.domain.entity;
+package com.sparta.currency_user.global.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

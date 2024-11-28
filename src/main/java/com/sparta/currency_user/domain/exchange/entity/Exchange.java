@@ -1,7 +1,7 @@
 package com.sparta.currency_user.domain.exchange.entity;
 
 import com.sparta.currency_user.domain.currency.entity.Currency;
-import com.sparta.currency_user.domain.entity.Base;
+import com.sparta.currency_user.global.entity.Base;
 import com.sparta.currency_user.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,11 +26,9 @@ public class Exchange extends Base {
     @JoinColumn(name = "to_currency_id", nullable = false)
     private Currency currency;
 
-    //환전 전 금액(원화 기준)
     @Column(nullable = false)
     private BigDecimal amountInKrw;
 
-    //환전 후 금액
     @Column(nullable = false)
     private BigDecimal amountAfterExchange;
 

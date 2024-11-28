@@ -1,6 +1,6 @@
 package com.sparta.currency_user.domain.currency.entity;
 
-import com.sparta.currency_user.domain.entity.Base;
+import com.sparta.currency_user.global.entity.Base;
 import com.sparta.currency_user.domain.exchange.entity.Exchange;
 import jakarta.persistence.*;
 import lombok.Getter;
