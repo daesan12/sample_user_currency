@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class CurrencyResponseDto {
+
     private final Long id;
     private final String currencyName;
     private final BigDecimal exchangeRate;
