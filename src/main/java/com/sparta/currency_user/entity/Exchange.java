@@ -2,6 +2,7 @@ package com.sparta.currency_user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -30,8 +31,26 @@ public class Exchange extends Base {
     @Column(nullable = false)
     private BigDecimal amountAfterExchange;
 
+    @Setter
+    @Column
+    private String status = "normal";
 
-    @Column(nullable = false)
-    private String status;
+    public Exchange(User user, Currency currency, BigDecimal amountInKrw, BigDecimal amountAfterExchange) {
+        this.user = user;
+        this.currency = currency;
+        this.amountInKrw = amountInKrw;
+        this.amountAfterExchange = amountAfterExchange;
+    }
 
+    public Exchange() {
+
+    }
+
+    public void toggleStatus() {
+        if ("cancelled".equals(this.status)) {
+            this.status = "normal";
+        } else if ("normal".equals(this.status)) {
+            this.status = "cancelled";
+        }
+    }
 }
